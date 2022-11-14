@@ -1,0 +1,101 @@
+16:39:05 **** Incremental Build of configuration Debug for project TP_Bus_Reseau ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'I2C1_test':
+../Core/Src/main.c:71:49: warning: passing argument 3 of 'HAL_I2C_Master_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
+   71 |  HAL_I2C_Master_Transmit(&hi2c1,BMP280_I2Caddr, &I2C_transmit, 1, HAL_MAX_DELAY);
+      |                                                 ^~~~~~~~~~~~~
+      |                                                 |
+      |                                                 int *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:359,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:566:98: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'int *'
+  566 | HAL_StatusTypeDef HAL_I2C_Master_Transmit(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                                         ~~~~~~~~~^~~~~
+../Core/Src/main.c:72:49: warning: passing argument 3 of 'HAL_I2C_Master_Receive' from incompatible pointer type [-Wincompatible-pointer-types]
+   72 |  HAL_I2C_Master_Receive(&hi2c1, BMP280_I2Caddr, &I2C_receive, 1, HAL_MAX_DELAY);
+      |                                                 ^~~~~~~~~~~~
+      |                                                 |
+      |                                                 int *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:359,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:567:97: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'int *'
+  567 | HAL_StatusTypeDef HAL_I2C_Master_Receive(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                                        ~~~~~~~~~^~~~~
+../Core/Src/main.c: In function 'bmp280_compensate_T_int32':
+../Core/Src/main.c:133:15: warning: unused variable 'dig_T3' [-Wunused-variable]
+  133 |  signed short dig_T3 = calibration[4] | (calibration[5] <<16);
+      |               ^~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:243:11: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  243 |  printf("%d, %d\r\n",status1, status2);
+      |          ~^          ~~~~~~~
+      |           |          |
+      |           int        uint32_t {aka long unsigned int}
+      |          %ld
+../Core/Src/main.c:243:15: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  243 |  printf("%d, %d\r\n",status1, status2);
+      |              ~^               ~~~~~~~
+      |               |               |
+      |               int             uint32_t {aka long unsigned int}
+      |              %ld
+../Core/Src/main.c:252:48: warning: passing argument 2 of 'HAL_CAN_IsTxMessagePending' makes integer from pointer without a cast [-Wint-conversion]
+  252 |   status1 = HAL_CAN_IsTxMessagePending(&hcan1, pTxMailbox);
+      |                                                ^~~~~~~~~~
+      |                                                |
+      |                                                uint32_t * {aka long unsigned int *}
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:299,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h:681:71: note: expected 'uint32_t' {aka 'long unsigned int'} but argument is of type 'uint32_t *' {aka 'long unsigned int *'}
+  681 | uint32_t HAL_CAN_IsTxMessagePending(CAN_HandleTypeDef *hcan, uint32_t TxMailboxes);
+      |                                                              ~~~~~~~~~^~~~~~~~~~~
+../Core/Src/main.c:257:48: warning: passing argument 2 of 'HAL_CAN_IsTxMessagePending' makes integer from pointer without a cast [-Wint-conversion]
+  257 |   status2 = HAL_CAN_IsTxMessagePending(&hcan1, pTxMailbox);
+      |                                                ^~~~~~~~~~
+      |                                                |
+      |                                                uint32_t * {aka long unsigned int *}
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:299,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h:681:71: note: expected 'uint32_t' {aka 'long unsigned int'} but argument is of type 'uint32_t *' {aka 'long unsigned int *'}
+  681 | uint32_t HAL_CAN_IsTxMessagePending(CAN_HandleTypeDef *hcan, uint32_t TxMailboxes);
+      |                                                              ~~~~~~~~~^~~~~~~~~~~
+../Core/Src/main.c:263:12: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  263 |   printf("%d,%d\r\n",status1, status2);
+      |           ~^         ~~~~~~~
+      |            |         |
+      |            int       uint32_t {aka long unsigned int}
+      |           %ld
+../Core/Src/main.c:263:15: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  263 |   printf("%d,%d\r\n",status1, status2);
+      |              ~^               ~~~~~~~
+      |               |               |
+      |               int             uint32_t {aka long unsigned int}
+      |              %ld
+../Core/Src/main.c:227:10: warning: unused variable 'pData' [-Wunused-variable]
+  227 |  uint8_t pData = 0;
+      |          ^~~~~
+../Core/Src/main.c:212:7: warning: unused variable 'afficheurCompteur' [-Wunused-variable]
+  212 |  char afficheurCompteur = 0;
+      |       ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "TP_Bus_Reseau.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Travail\ENSEA\Local_Github_rep\TP_Bus_Reseau\TP_Bus_Reseau\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TP_Bus_Reseau.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: TP_Bus_Reseau.elf
+ 
+arm-none-eabi-size   TP_Bus_Reseau.elf 
+arm-none-eabi-objdump -h -S  TP_Bus_Reseau.elf  > "TP_Bus_Reseau.list"
+   text	   data	    bss	    dec	    hex	filename
+  16520	    120	   1848	  18488	   4838	TP_Bus_Reseau.elf
+Finished building: default.size.stdout
+ 
+Finished building: TP_Bus_Reseau.list
+ 
+
+16:39:06 Build Finished. 0 errors, 11 warnings. (took 828ms)
+

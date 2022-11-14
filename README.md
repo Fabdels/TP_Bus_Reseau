@@ -81,3 +81,27 @@ return (BMP280_U32_t)p;
 
 
 
+
+
+
+@api.route permet d' "organiser" le serveur web (ajout d'un nouveau sous-URL)
+
+<int:index> récupère une valeur entière et la met dans une variable nommée int.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
