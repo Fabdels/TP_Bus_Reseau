@@ -50,9 +50,12 @@ def api_welcome_index(index=None):
             val = welcome[index]
             welcome = welcome[:index] + welcome[index+1:]
         return jsonify({"index": index, "val": val, "sentence" : welcome})
+
+
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template('page_not_found.html'), 404
+
 
 @app.route('/api/request/', methods=['GET', 'POST'])
 @app.route('/api/request/<path>', methods=['GET','POST'])
